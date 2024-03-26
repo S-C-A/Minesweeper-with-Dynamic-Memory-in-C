@@ -1,4 +1,3 @@
-// -10: 0, -9: bomb -1 to -8: unrevealed mark
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -15,8 +14,17 @@ int main(){
 
     srand(time(NULL));
     int bomb, row = 0, column = 0;
-    printf("How many bombs do you want to add: ");
-    scanf("%d", &bomb);
+    while (1)
+    {
+        printf("How many bombs do you want to add: ");
+        scanf("%d", &bomb);
+        if (bomb > 100)
+        {
+            printf("You've placed too many bombs! The grid is 10x10\n");
+            continue;
+        }
+        break;
+    }
     int **background;
     background = (int **)calloc(10,(sizeof(int *)));
     for (int i = 0; i < 10; i++)
